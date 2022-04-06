@@ -37,7 +37,7 @@ func (s *SmartContract) CreateBoard(ctx contractapi.TransactionContextInterface,
 	title string,
 	contents string) error {
 
-	boardExist, err := s.BoardExists(ctx, id)
+	boardExist, err := s.BoardExists(ctx, id, title)
 
 	if err != nil {
 		return err
@@ -84,7 +84,7 @@ func (s *SmartContract) BoardExists(ctx contractapi.TransactionContextInterface,
 func (s *SmartContract) ReadBoard(ctx contractapi.TransactionContextInterface,
 	id string,
 	title string) (*Board, error) {
-	boardJSON, err := ctx.GetStub.GetState(id)
+	boardJSON, err := ctx.GetStub().GetState(id)
 
 	/* GetState 에러확인 */
 	if err != nil {
@@ -118,7 +118,7 @@ func (s *SmartContract) UpdateBoard(ctx contractapi.TransactionContextInterface,
 	contents string) error {
 
 	/* 수정하려는 글 존재확인 */
-	boardExist, err := s.BoardExists(ctx, id)
+	boardExist, err := s.BoardExists(ctx, id, title)
 	if err != nil {
 		return err
 	}
@@ -151,7 +151,7 @@ func (s *SmartContract) DeleteAsset(ctx contractapi.TransactionContextInterface,
 	id string,
 	title string) error {
 	/* 삭제하려는 글 존재확인 */
-	boardExist, err := s.BoardExists(ctx, id)
+	boardExist, err := s.BoardExists(ctx, id, title)
 	if err != nil {
 		return err
 	}
