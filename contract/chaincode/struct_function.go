@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"https://github.com/hyperledger/fabric-contract-api-go/tree/main/contractapi"
+	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 )
 
 // SmartContract provides functions for managing an Asset

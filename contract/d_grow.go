@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 
-	"https://github.com/hyperledger/fabric-contract-api-go/tree/main/contractapi"
+	"github.com/hyperledger/fabric-contract-api-go/contractapi"
+	"github.com/hyperledger/fabric-samples/asset-transfer-basic/chaincode-go/chaincode"
 )
 
 func main() {
