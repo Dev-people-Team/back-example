@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html lang="ko" class="wf-notosanskr-n4-active wf-opensans-n4-active wf-active"></html>
+<title>전체 로그인(SNS)</title>
+<!--Bootsrap 4 CDN-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!--Fontawesome CDN-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/template/cms/user/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/template/cms/user/css/board.css">
+<link rel="stylesheet" type="text/css" href="/template/cms/user/css/common.css">
+<link rel="stylesheet" type="text/css" href="/template/cms/user/css/sub.css">
+<link rel="stylesheet" type="text/css" href="/template/cms/user/css/sub_respond.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><link rel="stylesheet" href="/template/cms/user/css/notosans.css"><script type="text/javascript">
+	WebFont.load({// For google fonts
+									google : {
+										families : [ 'Open Sans' ]
+									},
+									// For early access or custom font
+									custom : {
+										families : [ 'Noto Sans KR' ],
+										urls : [ '/template/cms/user/css/notosans.css']
+									}
+								});
+							</script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" href="css/common.css">
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/webfont/1.4.10/webfont.js"></script>
+<script src="/js/egovframework/com/cmm/common.js"></script>
+<script src="/js/egovframework/com/cmm/common.js"></script>
+<script type="text/javascript" src="https://www.epis.or.kr:443/template/cms/user/js/jquery-1.11.1.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				Kakao.init("950f3ae1f2f550e5ba7ff7d9fffc7781");
+				function getKakaotalkUserProfile(){
+					Kakao.API.request({
+						url: '/v2/user/me',
+						success: function(res) {
+							//이메일 전송
+							if(typeof console.debug === 'function') {
+								console.debug('res : ');
+								console.debug(JSON.stringify(res));
+								if(!!res) {
+									console.debug('res.kaccount_email >');
+									console.debug(res.kaccount_email);
+								}
+							}
+							if(res && typeof res.kaccount_email === 'string' && res.kaccount_email.length > 0) {
+								parent.setDt(res.kaccount_email);
+							} else {
+								parent.setDt('kakao_no_email');
+							}
+							//$("#kakao-profile").append($("<img/>",{"src":res.properties.profile_image,"alt":res.properties.nickname+"님의 프로필 사진"}));
+						},
+						fail: function(error) {
+							console.log(error);
+						}
+					});
+				}
+				function createKakaotalkLogin(){
+					$("#kakao-logged-group .kakao-logout-btn,#kakao-logged-group .kakao-login-btn").remove();
+					var loginBtn = $("<a/>",{"class":"kakao-login-btn","text":"로그인"});
+					loginBtn.click(function(){
+						Kakao.Auth.login({
+							persistAccessToken: true,
+							persistRefreshToken: true,
+							success: function(authObj) {
+								if(typeof console.debug === 'function') {
+									console.debug('카카오 인증 성공!');
+								}
+								getKakaotalkUserProfile();
+								createKakaotalkLogout();
+							},
+							fail: function(err) {
+								console.log(err);
+							}
+						});
+					});
+					$("#kakao-logged-group").prepend(loginBtn)
+				}
+				function createKakaotalkLogout(){
+					console.log('createKakaotalkLogout()..');
+					$("#kakao-logged-group .kakao-logout-btn,#kakao-logged-group .kakao-login-btn").remove();
+					var logoutBtn = $("<a/>",{"class":"kakao-logout-btn","text":"로그아웃"});
+					logoutBtn.click(function(){
+						Kakao.Auth.logout();
+						createKakaotalkLogin();
+						$("#kakao-profile").text("");
+					});
+					$("#kakao-logged-group").prepend(logoutBtn);
+				}
+				if(Kakao.Auth.getRefreshToken()!=undefined&&Kakao.Auth.getRefreshToken().replace(/ /gi,"")!=""){
+					createKakaotalkLogout();
+					getKakaotalkUserProfile();
+				}else{
+					createKakaotalkLogin();
+				}
+			});
+		</script>
+			<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<!------ Include the above in your HEAD tag ---------->
+	</head>
+
+
+<style>
+.sns-naver
+{ 	width: 120px;
+	height: 38px;
+    display: block;
+	color: #fff;
+	hover:color: #fff;
+    margin: 0 auto;
+    background: url(img/Nbtn_in.png) no-repeat;
+}
+a.sns-naver:hover{
+	color: green;
+}
+.sns-kakao{
+	background-color: ;
+}
+</style>
+
+<body>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card1">
+			<div class="card-header">
+				<h3>로그인</h3>
+				
+			<!--	<div class="d-flex justify-content-end social_icon">
+					<span><i class="fab fa-naver-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div>-->
+			</div>
+			<div class="card-body">
+				<form>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="이메일">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="비밀번호">
+					</div>
+					<div class="row align-items-center remember">
+						<input type="checkbox">비밀번호 기억하기
+					</div>
+					<div class="form-group">
+						<input type="submit" value="로그인" class="btn float-right login_btn">
+					</div>
+					<div id="naverIdLogin" >
+				 <a href="#" id="naverLogin" class="btn sns-naver" title="새창">네이버로 로그인</a></div>
+
+					<!--<a href="javascript:void(0);" id="kakaoLogin" class="sns_login_btn kakao" onclick="login();" title="카카오톡 로그인 새창열림">카카오톡 로그인</a>
+					<iframe name="easyXDM_Kakao_u8381su2fop_provider" id="easyXDM_Kakao_u8381su2fop_provider" src="https://kauth.kakao.com/public/widget/login/kakaoLoginWidget.html?xdm_e=https%3A%2F%2Fwww.epis.or.kr&amp;xdm_c=u8381su2fop&amp;xdm_p=1" frameborder="0" style="position: absolute; top: -2000px; left: 0px;"></iframe></body></html>
+				    <a href="#" id="googleLogin" class="btn sns-google" title="새창">구글 로그인</a>-->
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					계정이 없으신가요? <a href="#" color="#fff"> 회원가입</a>
+				</div>
+		
+			</div>
+		</div>
+	</div>
+
+	
+</div>
+
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+
+  
+<script type="text/javascript">
+	var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "YOUR_CALLBACK_URL");
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("white", 2,40);
+	naver_id_login.setDomain("YOUR_SERVICE_URL");
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+</script>
+
+<script>
+	function login(){
+		$(".kakao-login-btn").trigger("click");
+	}
+</script>
+</body>
+</html>
