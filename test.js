@@ -1,8 +1,3 @@
-/*
-var http = require('http');
-var url = require('url');
-var theveloper = require('./lib/theveloper');
-*/
 var express = require('express');
 var http    = require('http');
 var bodyParser = require('body-parser');
