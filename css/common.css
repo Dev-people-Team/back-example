@@ -1,0 +1,49 @@
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,button,input,abbr,article,aside,command,details,figcaption,figure,footer,header,hgroup,mark,meter,nav,output,progress,section,summary,time,menu,select,legend{margin:0;padding:0}
+li{list-style: none;}
+a{text-decoration: none; cursor: pointer;}
+a.select{
+  color: #dbdede;
+  border-bottom: 4px solid #dbdede;
+  box-sizing: border-box;
+}
+a.blue{color: #1990ff;}
+.icons{display: inline-block;}
+/*---------------set*/
+.cwrp{
+  max-width: 1320px; min-width: 770px;
+  margin: 0 auto;
+}
+.cwrp2{
+  width: 1100px; min-width: 770px;
+  margin: 0 auto;
+}
+.txt_dl{
+  font-size: 0; text-indent: -9999px; color: transparent;
+}
+html{height: 100%;}
+body{
+  letter-spacing: -1px;
+  font-size: 13px;
+  height: 100%;
+  text-overflow: ellipsis;
+}
+input:focus{outline: none}
+footer{
+  width: 100%;
+  height: 60px;
+  background-color: #d7d7d7;
+}
+footer ul{
+  max-width: 1320px;
+  width: 100%;
+  min-width: 575px;
+  display: flex;
+  line-height: 61px;
+  position: absolute;
+}
+footer ul li{
+  text-align: center;
+  margin-left: 32px;
+}
+footer ul li a{color: #454545;}
+footer ul li:last-child{position: absolute;right: 0;}

@@ -1,0 +1,142 @@
+nav{
+  background-color: #000;
+  z-index: 999;
+  width: 100% ; height: 60px;
+  position: fixed;
+  min-width: 660px;
+}
+nav .cwrp{ position: relative; overflow: hidden;font-family: "Eksell Display Large";}
+nav ul{
+  display: flex;
+  width: 100%;
+  height: 60px;line-height: 60px;
+  /*margin-left: 0px;*/
+  overflow: hidden;
+}
+nav ul li{
+  text-align: center;
+  width: 110px;
+}
+nav ul li > *{
+  transition: all 0.2s ease;
+}
+nav ul li:hover a{
+  color: #1990ff;
+}
+nav ul li a{
+  color: #fff;
+  font-size: 16px;
+  display: inline-block;
+  width: 100%; height: 100%;
+}
+nav ul li:first-child a{
+  margin-top: 17px; padding: 0;
+  display: inline-block; width: 50px; height: 24px;
+  background: url(../img/logo_txt_blue.png) no-repeat;
+  background-size: 100%;
+}
+nav ul li.nav_id,
+nav ul li.nav_join{position: absolute;}
+nav ul li.nav_id{right: 0;}
+nav ul li.nav_join{right: 110px;}
+
+nav form{
+  z-index: 999;
+  position: absolute;
+  top: 60px;right: 222px;
+  /*top: 50px;right: 222px;*/
+}
+
+nav form div{
+  width: 220px; height: 35px;
+}
+nav form div input{
+  height: 100%;
+  position: absolute;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  text-indent: 20px;
+  background-color: #f5f5f5;
+}
+nav form div input:first-child{
+  width: 176px; top: 0;
+  left: 0; z-index: 1;
+  border-radius: 5px 0 0px 5px;
+}
+nav form div input:last-child{
+  width: 43px; height: 37px; right: 0;z-index: 2;
+  background:url(../img/user_icons.png) no-repeat;
+  background-position: -157px 5px;
+  background-color: #f5f5f5;
+  border-radius: 0 5px 5px 0;
+  cursor:pointer;
+}
+nav form div input:last-child::-webkit-input-placeholder{
+  color: #cbcaca;
+}
+
+
+header .headwrp{
+  padding-top: 60px;
+  width: 100%; height: 180px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+header .headwrp h1{
+  font-size: 16px; color: #353535;
+  position: relative;
+}
+header .headwrp h1 a > *{position: absolute;}
+header .headwrp h1 a .icons:first-child{
+  width: 280px; height:67px;  top:62px; left:15px;
+  background: url(../img/logo_icon.png) no-repeat;
+  background-size: 100% 100%;
+}
+header .headwrp h1 a .icons:nth-child(2){
+  width: 80px; height: 38px;
+  top: 72px; left:141px;
+  /*background: url(../img/logo_txt_black.png) no-repeat;*/
+  background-size: auto 100%;
+  border-right: 1px solid #e5e5e5;
+  padding-right: 10px;
+}
+header .headwrp h1 a p{
+  top: 93px; left: 250px; font-size: 18px;
+  color: #000;
+}
+header .headwrp .cwrp{position: relative;}
+header .headwrp .cwrp form{
+  position: absolute;
+  right: 0;
+}
+header .headwrp .cwrp form{
+  position: absolute;
+  top: 72px;right: 0;
+}
+header .headwrp .cwrp form div{
+  width: 220px; height: 35px;
+}
+header .headwrp .cwrp form div input{
+  height: 100%;
+  position: absolute;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  text-indent: 20px;
+  background-color: #f5f5f5;
+}
+header .headwrp .cwrp form div input:first-child{
+  width: 176px; top: 0;
+  left: 0; z-index: 1;
+  border-radius: 5px 0 0px 5px;
+}
+header .headwrp .cwrp form div input:last-child{
+  width: 43px; height: 37px; right: 0;z-index: 2;
+  background:url(../img/user_icons.png) no-repeat;
+  background-position: -157px 5px;
+  background-color: #f5f5f5;
+  border-radius: 0 5px 5px 0;
+  cursor:pointer;
+}
+header .headwrp .cwrp form div input:last-child::-webkit-input-placeholder{
+  color: #cbcaca;
+}
